@@ -1,0 +1,14 @@
+﻿.vscode/
+go.sum
+.gigacode_vsc/
+*/.gigarc
+.env
+*.png
+*.log
+*.txt
+postgres_data/
+*/postgres_data/
+/.env
+*/.env
+*/.txt
+/.txt
