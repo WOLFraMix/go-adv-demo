@@ -9,6 +9,7 @@ import (
 	"gorm.io/gorm"
 
 	"go-adv-demo/internal/link"
+	"go-adv-demo/internal/stat"
 	"go-adv-demo/internal/user"
 )
 
@@ -23,7 +24,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = db.AutoMigrate(&link.Link{}, &user.User{})
+	err = db.AutoMigrate(&link.Link{}, &user.User{}, &stat.Stat{})
 	if err != nil {
 		log.Fatal(err)
 	}
