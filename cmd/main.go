@@ -7,6 +7,7 @@ import (
 	"go-adv-demo/internal/link"
 	"go-adv-demo/internal/user"
 	"go-adv-demo/pkg/db"
+	"go-adv-demo/pkg/event"
 	"go-adv-demo/pkg/middleware"
 	"net/http"
 )
@@ -15,9 +16,11 @@ func main() {
 	cfg := configs.LoadConfig()
 	db := db.NewDb(cfg)
 	router := http.NewServeMux()
+	eventBus := event.NewEventBus()
 
 	linkRepository := link.NewLinkRepository(db)
 	userRepository := user.NewUserRepository(db)
+	// statRepository := stat.NewStatRepository(db)
 
 	authServices := auth.NewAuthService(userRepository)
 
@@ -27,6 +30,7 @@ func main() {
 	})
 	link.NewLinkHandler(router, link.LinkHandlerDeps{
 		LinkRepository: linkRepository,
+		EventBus:       eventBus,
 		Config:         cfg,
 	})
 
