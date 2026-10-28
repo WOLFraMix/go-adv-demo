@@ -1,5 +1,4 @@
 ﻿.vscode/
-go.sum
 .gigacode_vsc/
 */.gigarc
 .env
